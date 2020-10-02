@@ -2,6 +2,8 @@ package edu.coursera.parallel;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
 
 /**
@@ -162,14 +164,7 @@ public final class ReciprocalArraySum {
         	tasks.add(task);
         }
         
-        // Execute
-        for (ReciprocalArraySumTask task : tasks) {
-			task.fork();
-		}
-        for (ReciprocalArraySumTask task : tasks) {
-    		task.join();
-        }
-    
+        ForkJoinTask.invokeAll(tasks);
         
         // Finalization
         for (ReciprocalArraySumTask task : tasks) {
