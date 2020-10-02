@@ -19,7 +19,7 @@ public class StudentAnalyticsTest extends TestCase {
     }
 
     private Student[] generateStudentData() {
-        final int N_STUDENTS = 2000000;
+        final int N_STUDENTS = 2_000_000;
         final int N_CURRENT_STUDENTS = 600000;
 
         Student[] students = new Student[N_STUDENTS];
@@ -75,7 +75,6 @@ public class StudentAnalyticsTest extends TestCase {
      * Test performance of averageAgeOfEnrolledStudentsParallelStream.
      */
     public void testAverageAgeOfEnrolledStudentsPerf() {
-        final int ncores = getNCores();
         final double speedup = averageAgeOfEnrolledStudentsHelper(REPEATS);
         String msg = "Expected parallel version to run at least 1.2x faster but speedup was " + speedup;
         assertTrue(msg, speedup > 1.2);
@@ -159,7 +158,6 @@ public class StudentAnalyticsTest extends TestCase {
      * Test performance of countNumberOfFailedStudentsOlderThan20ParallelStream.
      */
     public void testCountNumberOfFailedStudentsOlderThan20Perf() {
-        final int ncores = getNCores();
         final double speedup = countNumberOfFailedStudentsOlderThan20Helper(REPEATS);
         String msg = "Expected parallel version to run at least 1.2x faster but speedup was " + speedup;
         assertTrue(msg, speedup > 1.2);
